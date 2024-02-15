@@ -68,6 +68,8 @@ private:
     CGUIStaticImage*                                 pProgressMask = reinterpret_cast<CGUIStaticImage*>(m_GUI->CreateStaticImage(pProgressBG));
     CGUILabel*                                       pLabelDownloadProgress;
     CGUILabel*                                       pLabelDownloadProgressF;
+	// Удаление фона
+    CGUIStaticImage*                                 t_progress_bar_bg = reinterpret_cast<CGUIStaticImage*>(m_GUI->CreateStaticImage());
 
     enum VisibilitySource
     {

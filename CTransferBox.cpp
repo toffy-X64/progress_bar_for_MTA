@@ -35,6 +35,16 @@ CTransferBox::CTransferBox(TransferBoxType transferType) : m_GUI(g_pCore->GetGUI
     m_visible.set(TB_VISIBILITY_SERVER_SCRIPT);
 
     g_pCore->GetCVars()->Get("always_show_transferbox", m_alwaysVisible);
+	
+	CVector2D screenSize = m_GUI->GetResolution();
+    
+    // Удаление фона
+    t_progress_bar_bg->SetSize( CVector2D( screenSize.fX, screenSize.fY ) );
+    t_progress_bar_bg->SetPosition( CVector2D( 0, 0 ) );
+    t_progress_bar_bg->LoadFromFile("cgui\\images\\main\\4.png");
+    t_progress_bar_bg->SetZOrderingEnabled(false);
+    t_progress_bar_bg->SetAlwaysOnTop(false);
+    t_progress_bar_bg->SetVisible(false);
 
     //CreateTransferWindow();
     CreateProgressBarBg();
@@ -56,6 +66,7 @@ void CTransferBox::CreateProgressBarBg()
     pProgressBG->SetSize( CVector2D ( screenSize.fX - 2 * 20.0f, PROGRESS_BG_HEIGHT ) );
     pProgressBG->LoadFromFile("cgui\\images\\progress_bar\\bg.png");
     pProgressBG->SetVisible(false);
+	pProgressBG->SetAlwaysOnTop(true);
 
 
     // MASK
@@ -63,6 +74,7 @@ void CTransferBox::CreateProgressBarBg()
     pProgressMask->LoadFromFile("cgui\\images\\progress_bar\\mask.png");
     pProgressMask->SetSize( CVector2D( 0, PROGRESS_BG_HEIGHT ) );
     pProgressMask->SetVisible(false);
+	pProgressMask->SetAlwaysOnTop(true);
 
     // DOWNLOAD PROGRESS LABEL
 
